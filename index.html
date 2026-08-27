@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Ode Yunus Abdillah Sandi — Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1220;
+    --panel:#121B2E;
+    --panel-2:#0F1728;
+    --line:#243252;
+    --text:#E7ECF5;
+    --text-dim:#8FA0C2;
+    --amber:#F5A623;
+    --cyan:#45C4B0;
+    --danger:#E8586C;
+    --radius:10px;
+    --mono: 'IBM Plex Mono', monospace;
+    --disp: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:56px 56px;
+    opacity:0.12;
+    pointer-events:none;
+    z-index:0;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
+  ::selection{background:var(--amber); color:#0B1220;}
+
+  /* ---------- top status bar ---------- */
+  .statusbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,18,32,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .statusbar .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-dim);
+    letter-spacing:0.03em;
+  }
+  .statusbar .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--cyan);
+    display:inline-block; margin-right:8px;
+    box-shadow:0 0 0 0 rgba(69,196,176,0.6);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(69,196,176,0.5);}
+    70%{box-shadow:0 0 0 8px rgba(69,196,176,0);}
+    100%{box-shadow:0 0 0 0 rgba(69,196,176,0);}
+  }
+  .statusbar nav{display:flex; gap:22px;}
+  .statusbar nav a{color:var(--text-dim); transition:color .2s;}
+  .statusbar nav a:hover{color:var(--amber);}
+  @media (max-width:640px){ .statusbar nav{display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{padding:88px 0 60px; position:relative;}
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; color:var(--amber);
+    letter-spacing:0.12em; text-transform:uppercase;
+    display:flex; align-items:center; gap:10px; margin-bottom:22px;
+  }
+  .eyebrow::before{content:"//"; color:var(--text-dim);}
+  h1{
+    font-family:var(--disp); font-weight:700;
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    line-height:1.05; letter-spacing:-0.02em;
+    margin-bottom:18px;
+  }
+  h1 .accent{color:var(--cyan);}
+  .role-line{
+    font-family:var(--mono); font-size:15px; color:var(--text-dim);
+    margin-bottom:28px;
+  }
+  .role-line span{color:var(--text);}
+  .hero-desc{max-width:560px; color:var(--text-dim); font-size:16px; margin-bottom:34px;}
+  .hero-links{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:56px;}
+  .hero-links a{
+    font-family:var(--mono); font-size:13px;
+    padding:10px 16px; border:1px solid var(--line); border-radius:var(--radius);
+    color:var(--text); transition:.2s;
+  }
+  .hero-links a:hover{border-color:var(--cyan); color:var(--cyan); transform:translateY(-1px);}
+  .hero-links a.primary{background:var(--amber); border-color:var(--amber); color:#0B1220; font-weight:600;}
+  .hero-links a.primary:hover{background:#ffb84d; border-color:#ffb84d; color:#0B1220;}
+
+  /* signature network diagram */
+  .netdiagram{width:100%; max-width:760px; margin:0 auto;}
+  .netdiagram svg{width:100%; height:auto; display:block;}
+  .netlabel{font-family:var(--mono); font-size:10.5px; fill:var(--text-dim); letter-spacing:0.05em;}
+  .netnode{fill:var(--panel); stroke:var(--line); stroke-width:1.5;}
+  .netnode-core{fill:var(--panel-2); stroke:var(--amber); stroke-width:1.6;}
+  .netline{stroke:var(--line); stroke-width:1.2; fill:none;}
+  .netpulse{stroke:var(--cyan); stroke-width:2; fill:none; stroke-dasharray:6 10; stroke-linecap:round;}
+
+  /* ---------- section shell ---------- */
+  section{padding:64px 0; border-top:1px solid var(--line); position:relative;}
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:34px; flex-wrap:wrap;}
+  .sec-num{font-family:var(--mono); font-size:12px; color:var(--amber);}
+  .sec-title{font-family:var(--disp); font-size:1.7rem; font-weight:600; letter-spacing:-0.01em;}
+
+  /* ---------- ringkasan ---------- */
+  .summary-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:36px;}
+  @media (max-width:760px){ .summary-grid{grid-template-columns:1fr;} }
+  .summary-text p{color:var(--text-dim); font-size:15.5px; margin-bottom:14px;}
+  .summary-text strong{color:var(--text); font-weight:600;}
+  .stat-panel{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 22px;
+  }
+  .stat-row{display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px dashed var(--line); font-size:14px;}
+  .stat-row:last-child{border-bottom:none;}
+  .stat-row .k{color:var(--text-dim); font-family:var(--mono); font-size:12.5px;}
+  .stat-row .v{color:var(--cyan); font-weight:600; font-family:var(--mono);}
+
+  /* ---------- keahlian ---------- */
+  .skills-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:16px;}
+  @media (max-width:700px){ .skills-grid{grid-template-columns:1fr;} }
+  .skill-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 22px; transition:.2s;
+  }
+  .skill-card:hover{border-color:var(--cyan); transform:translateY(-2px);}
+  .skill-card .label{
+    font-family:var(--mono); font-size:11px; color:var(--amber);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; display:block;
+  }
+  .skill-card .items{color:var(--text-dim); font-size:14px;}
+  .tag{
+    display:inline-block; background:var(--panel-2); border:1px solid var(--line);
+    color:var(--text); font-family:var(--mono); font-size:11.5px;
+    padding:4px 9px; border-radius:6px; margin:3px 4px 0 0;
+  }
+
+  /* ---------- pengalaman timeline ---------- */
+  .timeline{position:relative; padding-left:26px;}
+  .timeline::before{
+    content:""; position:absolute; left:5px; top:6px; bottom:6px; width:1.5px;
+    background:var(--line);
+  }
+  .tl-item{position:relative; margin-bottom:38px;}
+  .tl-item:last-child{margin-bottom:0;}
+  .tl-item::before{
+    content:""; position:absolute; left:-26px; top:5px; width:11px; height:11px;
+    border-radius:50%; background:var(--bg); border:2px solid var(--cyan);
+  }
+  .tl-period{font-family:var(--mono); font-size:12px; color:var(--amber); margin-bottom:4px;}
+  .tl-role{font-family:var(--disp); font-size:1.15rem; font-weight:600;}
+  .tl-org{color:var(--text-dim); font-size:14px; margin-bottom:10px;}
+  .tl-item ul{padding-left:18px; color:var(--text-dim); font-size:14.5px;}
+  .tl-item li{margin-bottom:5px;}
+  .tl-item li::marker{color:var(--cyan);}
+
+  /* ---------- proyek ---------- */
+  .project-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:28px 30px; margin-bottom:20px;
+  }
+  .project-head{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:14px;}
+  .project-title{font-family:var(--disp); font-weight:600; font-size:1.2rem;}
+  .project-type{font-family:var(--mono); font-size:11.5px; color:var(--text-dim); margin-top:4px;}
+  .project-desc{color:var(--text-dim); font-size:14.5px; margin-bottom:18px; max-width:680px;}
+  .project-cols{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media (max-width:700px){ .project-cols{grid-template-columns:1fr;} }
+  .project-block .label{
+    font-family:var(--mono); font-size:11px; color:var(--amber);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; display:block;
+  }
+  .project-block ul{padding-left:18px; color:var(--text-dim); font-size:14px;}
+  .project-block li{margin-bottom:8px;}
+  .project-block li::marker{color:var(--cyan);}
+  .project-block code{
+    background:var(--panel-2); border:1px solid var(--line); border-radius:4px;
+    padding:1px 6px; font-family:var(--mono); font-size:12.5px; color:var(--cyan);
+  }
+  .project-tags{margin-top:18px; padding-top:18px; border-top:1px dashed var(--line);}
+
+  /* ---------- publikasi ---------- */
+  .pub-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px 26px; display:flex; gap:20px; align-items:flex-start;
+  }
+  @media (max-width:600px){ .pub-card{flex-direction:column;} }
+  .pub-badge{
+    font-family:var(--mono); font-size:22px; font-weight:600; color:var(--cyan);
+    background:var(--panel-2); border:1px solid var(--line); border-radius:8px;
+    padding:8px 14px; white-space:nowrap;
+  }
+  .pub-title{font-family:var(--disp); font-weight:600; font-size:1.05rem; margin-bottom:6px;}
+  .pub-meta{color:var(--text-dim); font-size:13px; font-family:var(--mono); margin-bottom:8px;}
+  .pub-desc{color:var(--text-dim); font-size:14.5px;}
+
+  /* ---------- pendidikan / organisasi split ---------- */
+  .split-grid{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  @media (max-width:700px){ .split-grid{grid-template-columns:1fr;} }
+  .edu-item{margin-bottom:22px;}
+  .edu-item:last-child{margin-bottom:0;}
+  .edu-school{font-family:var(--disp); font-weight:600; font-size:1.02rem;}
+  .edu-detail{color:var(--text-dim); font-size:13.5px; font-family:var(--mono); margin-top:3px;}
+
+  /* ---------- footer / contact ---------- */
+  footer{padding:70px 0 50px;}
+  .footer-inner{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px;
+    padding:44px 36px; text-align:center;
+  }
+  footer h2{font-family:var(--disp); font-size:2rem; margin-bottom:14px;}
+  footer p{color:var(--text-dim); margin-bottom:26px;}
+  .footer-links{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .footer-links a{
+    font-family:var(--mono); font-size:13px;
+    padding:10px 18px; border:1px solid var(--line); border-radius:var(--radius);
+    transition:.2s;
+  }
+  .footer-links a:hover{border-color:var(--amber); color:var(--amber);}
+  .copyright{text-align:center; font-family:var(--mono); font-size:11.5px; color:var(--text-dim); padding:24px 0 40px;}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="statusbar">
+  <div class="wrap">
+    <div><span class="dot"></span>SYSTEM ONLINE — KENDARI, ID</div>
+    <nav>
+      <a href="#ringkasan">Ringkasan</a>
+      <a href="#keahlian">Keahlian</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#publikasi">Publikasi</a>
+      <a href="#pendidikan">Pendidikan</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">profil_teknis.log</div>
+    <h1>La Ode Yunus<br>Abdillah <span class="accent">Sandi</span></h1>
+    <div class="role-line">node.role = <span>Data Scientist</span> · <span>Web Developer</span> · <span>Teknisi Jaringan</span></div>
+    <p class="hero-desc">Menghubungkan tiga simpul: infrastruktur jaringan, aplikasi web, dan model AI/data. Lulusan Teknik Informatika Universitas Halu Oleo dengan pengalaman riset deep learning dan penanganan jaringan langsung di lapangan.</p>
+    <div class="hero-links">
+      <a class="primary" href="mailto:sandiyunus07@gmail.com">Kirim Email</a>
+      <a href="https://www.linkedin.com/in/laode-yunus/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/SandiYunus" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://drive.google.com/drive/folders/1VgXM6Cee7Kmmv13qhAUrv4YIdyEqbrY4" target="_blank" rel="noopener">Portofolio Proyek ↗</a>
+    </div>
+
+    <div class="netdiagram reveal">
+      <svg viewBox="0 0 760 220" xmlns="http://www.w3.org/2000/svg">
+        <path class="netline" d="M120,60 C220,60 260,130 380,110"></path>
+        <path class="netline" d="M120,170 C220,170 260,120 380,110"></path>
+        <path class="netline" d="M640,60 C540,60 500,90 380,110"></path>
+        <path class="netline" d="M640,170 C540,170 500,130 380,110"></path>
+
+        <path class="netpulse" d="M120,60 C220,60 260,130 380,110">
+          <animate attributeName="stroke-dashoffset" from="160" to="0" dur="3.2s" repeatCount="indefinite"/>
+        </path>
+        <path class="netpulse" d="M640,170 C540,170 500,130 380,110">
+          <animate attributeName="stroke-dashoffset" from="0" to="160" dur="3.6s" repeatCount="indefinite"/>
+        </path>
+
+        <circle class="netnode" cx="120" cy="60" r="30"></circle>
+        <text x="120" y="65" text-anchor="middle" class="netlabel">JARINGAN</text>
+
+        <circle class="netnode" cx="120" cy="170" r="30"></circle>
+        <text x="120" y="175" text-anchor="middle" class="netlabel">WEB</text>
+
+        <circle class="netnode" cx="640" cy="60" r="30"></circle>
+        <text x="640" y="65" text-anchor="middle" class="netlabel">AI</text>
+
+        <circle class="netnode" cx="640" cy="170" r="30"></circle>
+        <text x="640" y="175" text-anchor="middle" class="netlabel">DATA</text>
+
+        <circle class="netnode-core" cx="380" cy="110" r="38"></circle>
+        <text x="380" y="107" text-anchor="middle" class="netlabel" style="fill:#F5A623; font-weight:600;">YUNUS</text>
+        <text x="380" y="120" text-anchor="middle" class="netlabel" style="font-size:9px;">node_core</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="ringkasan">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">Ringkasan</span></div>
+    <div class="summary-grid">
+      <div class="summary-text reveal">
+        <p>Lulusan <strong>Teknik Informatika Universitas Halu Oleo</strong> dengan fokus pada kecerdasan buatan, analisis data, dan data science. Berpengalaman melakukan penelitian sistem deteksi plat kendaraan menggunakan algoritma deep learning seperti <strong>YOLOv8, Faster R-CNN, dan RetinaNet</strong>, serta mengembangkan model untuk visualisasi dan interpretasi data secara real-time.</p>
+        <p>Di sisi lain, menangani langsung instalasi, konfigurasi, dan troubleshooting perangkat jaringan di <strong>BNN Kota Kendari</strong> — didukung Sertifikasi Ahli K3 Konstruksi untuk lingkungan kerja berisiko.</p>
+      </div>
+      <div class="stat-panel reveal">
+        <div class="stat-row"><span class="k">IPK</span><span class="v">3.73</span></div>
+        <div class="stat-row"><span class="k">AKURASI MODEL (NAIVE BAYES)</span><span class="v">95.79%</span></div>
+        <div class="stat-row"><span class="k">PUBLIKASI</span><span class="v">1 Jurnal</span></div>
+        <div class="stat-row"><span class="k">PENGALAMAN KERJA</span><span class="v">2 Instansi</span></div>
+        <div class="stat-row"><span class="k">LOKASI</span><span class="v">Kendari, ID</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="keahlian">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">Keahlian</span></div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <span class="label">AI, Data &amp; Visualisasi</span>
+        <div class="items">
+          <span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">Deep Learning</span>
+          <span class="tag">Data Science</span><span class="tag">Analisis Data</span><span class="tag">Metode Statistik</span>
+          <span class="tag">Dashboard Excel</span><span class="tag">Visualisasi Real-time</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="label">Pengembangan Web</span>
+        <div class="items">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+          <span class="tag">PHP</span><span class="tag">MySQL</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="label">Jaringan &amp; Sistem</span>
+        <div class="items">
+          <span class="tag">Instalasi Jaringan</span><span class="tag">Konfigurasi</span>
+          <span class="tag">Monitoring Perangkat</span><span class="tag">Troubleshooting</span>
+          <span class="tag">Hardware/Software</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="label">Sertifikasi</span>
+        <div class="items">
+          <span class="tag">Bangkit Academy (Google, GoTo, Traveloka)</span>
+          <span class="tag">TensorFlow Developer</span>
+          <span class="tag">Ahli Muda K3 Konstruksi — Kemen PU</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pengalaman">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Pengalaman</span></div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-period">Feb — Jul 2024</div>
+        <div class="tl-role">IT Support &amp; Web Developer</div>
+        <div class="tl-org">BNN Kota Kendari</div>
+        <ul>
+          <li>Merancang dan mengembangkan aplikasi manajemen kepegawaian: modul data pegawai, berkas kepegawaian, arsip, serta akses login terpusat.</li>
+          <li>Instalasi, konfigurasi, dan pemeliharaan perangkat jaringan sesuai prosedur kerja dan SOP.</li>
+          <li>Monitoring perangkat jaringan dan troubleshooting dasar.</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-period">Jul — Des 2019</div>
+        <div class="tl-role">Information Technology Technician</div>
+        <div class="tl-org">BPS Kota Kendari</div>
+        <ul>
+          <li>Membantu pemeliharaan dan troubleshooting komputer, hardware, serta perangkat pendukung.</li>
+          <li>Membantu pemeliharaan jaringan komputer internal serta troubleshooting konektivitas dasar.</li>
+          <li>Mendukung tugas-tugas administratif dan terkait data.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proyek">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">Proyek</span></div>
+
+    <div class="project-card reveal">
+      <div class="project-head">
+        <div>
+          <div class="project-title">Dashboard KPI Karyawan Perusahaan</div>
+          <div class="project-type">Excel · Data Cleansing · Formula &amp; Kategorisasi Otomatis · Pivot Table · Dashboard Interaktif</div>
+        </div>
+      </div>
+      <p class="project-desc">Mengolah data mentah karyawan (122 orang) menjadi dashboard KPI bulanan yang siap dibaca manajemen — mencakup pembersihan data, pembuatan kolom analisis baru dari kolom yang sudah ada, hingga ringkasan visual per divisi, cabang, dan generasi kerja.</p>
+
+      <div class="project-cols">
+        <div class="project-block">
+          <span class="label">Data Cleansing</span>
+          <ul>
+            <li>Memeriksa dan menangani nilai kosong (missing values) pada skor KPI bulanan agar tidak mengganggu perhitungan rata-rata.</li>
+            <li>Menstandarkan format tanggal (Tanggal Lahir, Mulai Kerja) dan konsistensi penulisan kategori (Divisi, Status, Cabang) agar bisa dikelompokkan dengan benar di pivot table.</li>
+            <li>Mengubah rentang data menjadi Excel Table agar formula otomatis menyesuaikan saat baris baru ditambahkan.</li>
+          </ul>
+        </div>
+        <div class="project-block">
+          <span class="label">Kolom Turunan &amp; Formula</span>
+          <ul>
+            <li>Menghitung <code>Usia</code> otomatis dari Tanggal Lahir memakai <code>DATEDIF(...,NOW(),"Y")</code>.</li>
+            <li>Mengklasifikasikan <code>Generasi Kerja</code> (Gen Z / Gen Y / Gen X / Baby Boomer) dari kolom Usia menggunakan fungsi <code>IF</code> bertingkat (nested IF).</li>
+            <li>Menghitung <code>Average</code> skor KPI Jan–Des per karyawan dengan <code>AVERAGE()</code>.</li>
+            <li>Mengkategorikan <code>Kinerja</code> (Low / Med / High) dari nilai Average menggunakan nested <code>IF</code> dengan ambang batas tertentu.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-tags">
+        <span class="tag">DATEDIF</span><span class="tag">Nested IF</span><span class="tag">AVERAGE</span>
+        <span class="tag">Excel Table</span><span class="tag">Pivot Table</span><span class="tag">Slicer</span>
+        <span class="tag">Dashboard Cutoff Date</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-head">
+        <div>
+          <div class="project-title">Ringkasan &amp; Visualisasi (Pivot Table)</div>
+          <div class="project-type">Analisis Komposisi Karyawan</div>
+        </div>
+      </div>
+      <p class="project-desc">Dari data yang sudah bersih dan berkolom lengkap, dibuat beberapa pivot table untuk merangkum komposisi karyawan secara cepat bagi manajemen.</p>
+      <div class="project-cols">
+        <div class="project-block">
+          <span class="label">Ringkasan yang Dibuat</span>
+          <ul>
+            <li>Jumlah karyawan per <code>Status</code> kepegawaian (Permanent, Contract, Outsource).</li>
+            <li>Jumlah karyawan per <code>Jenis Kelamin</code> dan per <code>Generasi Kerja</code>.</li>
+            <li>Jumlah karyawan per kategori <code>Kinerja</code> (Low/Med/High).</li>
+            <li>Skor KPI rata-rata (Sum of Average) per <code>Nama Pegawai</code> dan <code>Cabang</code>, diurutkan untuk menyoroti karyawan dengan skor terendah sebagai perhatian utama.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publikasi">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">Publikasi</span></div>
+    <div class="pub-card reveal">
+      <div class="pub-badge">95.79%</div>
+      <div>
+        <div class="pub-title">Klasifikasi Analisis Sentimen Ulasan Aplikasi Al Quran Indonesia di Play Store Menggunakan Metode Naive Bayes</div>
+        <div class="pub-meta">JATI — Jurnal Mahasiswa Teknik Informatika, Institut Teknologi Nasional Malang · Vol. 9 No. 2 (2025) · Kontributor Penulis</div>
+        <div class="pub-desc">Model klasifikasi sentimen berbasis Naive Bayes pada ulasan aplikasi mencapai akurasi 95,79%.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pendidikan">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><span class="sec-title">Pendidikan &amp; Organisasi</span></div>
+    <div class="split-grid">
+      <div class="reveal">
+        <div class="edu-item">
+          <div class="edu-school">Universitas Halu Oleo</div>
+          <div class="edu-detail">S1 Teknik Informatika · 2021 – 2026 · IPK 3.73</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">SMK Negeri 4 Kendari</div>
+          <div class="edu-detail">Teknik Komputer dan Jaringan · 2017 – 2020 · Rata-rata 86</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="edu-item">
+          <div class="edu-school">HMTI Universitas Halu Oleo</div>
+          <div class="edu-detail">Research and Technology Division · Jan 2024 – Jan 2025</div>
+          <p style="color:var(--text-dim); font-size:14px; margin-top:8px;">Mengadakan sharing session/workshop coding tentang dasar Git dan desain UI/UX bersama GDSC (Google Developer Student Clubs).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner reveal">
+      <h2>Mari terhubung.</h2>
+      <p>Terbuka untuk peluang di bidang data science, pengembangan web, maupun infrastruktur jaringan.</p>
+      <div class="footer-links">
+        <a href="mailto:sandiyunus07@gmail.com">sandiyunus07@gmail.com</a>
+        <a href="tel:+6282214294287">0822-1429-4287</a>
+        <a href="https://www.linkedin.com/in/laode-yunus/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/SandiYunus" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="copyright">© 2026 La Ode Yunus Abdillah Sandi — Kendari, Sulawesi Tenggara</div>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
