@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analisis Data Bike Sharing — La Ode Yunus Abdillah Sandi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="statusbar">
+  <div class="wrap">
+    <div><span class="dot"></span>SYSTEM ONLINE — KENDARI, ID</div>
+    <nav>
+      <a href="index.html#ringkasan">Ringkasan</a>
+      <a href="index.html#keahlian">Keahlian</a>
+      <a href="index.html#pengalaman">Pengalaman</a>
+      <a href="index.html#proyek" class="active">Proyek</a>
+      <a href="index.html#pendidikan">Pendidikan</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" style="padding:64px 0 40px;">
+  <div class="wrap">
+    <a href="index.html#proyek" class="back-link">← Kembali ke Daftar Proyek</a>
+    <div class="eyebrow">proyek.log · 02</div>
+    <h1 style="font-size:clamp(2rem, 5vw, 3.2rem);">Analisis Data Bike Sharing</h1>
+    <p class="hero-desc">Data yang ditampilkan pada contoh di bawah bersifat fiktif untuk keperluan demonstrasi.</p>
+  </div>
+</header>
+
+<section id="proyek-2" style="border-top:none; padding-top:0;">
+  <div class="wrap">
+
+    <div class="project-card reveal" id="proyek-bike-sharing">
+      <div class="project-type">Python · Pandas · Data Wrangling · EDA · Matplotlib/Seaborn · Dashboard Streamlit</div>
+      <p class="project-desc">Menganalisis dataset publik Bike Sharing (UCI) untuk menjawab tiga pertanyaan bisnis: pengaruh hari libur, pengaruh cuaca (kelembaban &amp; kecepatan angin), dan pengaruh musim terhadap jumlah penyewaan sepeda — dari data wrangling hingga dashboard interaktif di Streamlit.</p>
+
+      <span class="highlight-label">Data Wrangling</span>
+      <ul class="highlight-list">
+        <li>Mengecek tipe data, <code>missing value</code>, dan data terduplikat pada dua tabel (<code>day.csv</code> dan <code>hour.csv</code>).</li>
+        <li>Membuang tabel dan kolom yang tidak relevan dengan pertanyaan bisnis (mis. <code>instant</code>, <code>dteday</code>, <code>weathersit</code>) agar analisis lebih fokus.</li>
+        <li>Mengganti nama kolom (<code>hum</code> → <code>humidity</code>, <code>cnt</code> → <code>count</code>) agar lebih mudah dibaca.</li>
+      </ul>
+
+      <img class="project-img" src="images/bike-holiday.png" alt="Perbandingan jumlah pengguna sepeda berdasarkan hari kerja dan hari libur">
+      <p class="img-caption">Pertanyaan 1: Pengaruh hari kerja &amp; hari libur terhadap jumlah penyewa sepeda.</p>
+
+      <span class="highlight-label">Exploratory Data Analysis</span>
+      <ul class="highlight-list">
+        <li>Mengelompokkan (<code>groupby</code>) jumlah penyewa berdasarkan <code>holiday</code>, <code>workingday</code>, <code>humidity</code>, <code>windspeed</code>, dan <code>season</code>.</li>
+        <li>Menemukan jumlah penyewa lebih tinggi pada hari kerja dan hari biasa (non-libur) dibanding hari libur.</li>
+      </ul>
+
+      <img class="project-img" src="images/bike-weather.png" alt="Scatter plot windspeed dan humidity terhadap jumlah penyewaan sepeda">
+      <p class="img-caption">Pertanyaan 2: Hubungan kecepatan angin &amp; kelembaban terhadap pola peminjaman. Keduanya menunjukkan korelasi negatif — makin tinggi windspeed/humidity, jumlah penyewa cenderung menurun.</p>
+
+      <img class="project-img" src="images/bike-season.png" alt="Jumlah penyewaan sepeda per musim untuk pelanggan casual dan registered">
+      <p class="img-caption">Pertanyaan 3: Musim gugur (Fall) menjadi musim dengan penyewaan tertinggi, diikuti Summer, Winter, dan terakhir Spring — konsisten untuk pelanggan Casual maupun Registered.</p>
+
+      <span class="highlight-label">Insight Utama</span>
+      <ul class="highlight-list">
+        <li>Penyewaan lebih ramai di hari kerja &amp; hari non-libur — mengindikasikan sepeda banyak dipakai untuk keperluan commuting.</li>
+        <li>Cuaca buruk (angin kencang, kelembaban tinggi) menurunkan minat bersepeda.</li>
+        <li>Musim gugur adalah musim paling ramai (&gt;800.000 penyewaan), musim semi paling sepi (&gt;400.000 penyewaan).</li>
+      </ul>
+
+      <div class="project-tags">
+        <span class="tag">Pandas</span><span class="tag">Groupby & Agg</span><span class="tag">Data Cleaning</span>
+        <span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">Streamlit</span>
+      </div>
+
+      <div class="download-box">
+        <div class="download-info">
+          <span class="dl-label">Tautan Proyek</span>
+          <span class="dl-name">Notebook analisis & dashboard interaktif</span>
+        </div>
+        <div class="download-actions">
+          <a class="download-btn" href="https://github.com/SandiYunus/submision_analisis_data/blob/main/bike_sharing.ipynb" target="_blank" rel="noopener">📓 Lihat Notebook</a>
+          <a class="download-btn" href="https://dashboard-bike-sharingg.streamlit.app/" target="_blank" rel="noopener" style="background:var(--amber);">📊 Buka Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="wrap back-home-wrap">
+  <a href="index.html" class="back-home-btn">← Kembali</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner reveal">
+      <h2>Mari terhubung.</h2>
+      <p>Terbuka untuk peluang di bidang data science, pengembangan web, maupun infrastruktur jaringan.</p>
+      <div class="footer-links">
+        <a href="mailto:sandiyunus07@gmail.com">sandiyunus07@gmail.com</a>
+        <a href="tel:+6282214294287">0822-1429-4287</a>
+        <a href="https://www.linkedin.com/in/laode-yunus/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/SandiYunus" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="copyright">© 2026 La Ode Yunus Abdillah Sandi — Kendari, Sulawesi Tenggara</div>
+
+<script src="script.js"></script>
+</body>
+</html>
